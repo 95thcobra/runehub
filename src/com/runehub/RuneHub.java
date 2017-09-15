@@ -25,6 +25,7 @@ public class RuneHub {
         engine.exit();
     }
 
+
     public static void main(String[] args) {
         RuneHub hub = new RuneHub();
         hub.start();
