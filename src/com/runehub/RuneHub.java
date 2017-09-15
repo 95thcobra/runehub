@@ -1,8 +1,7 @@
 package com.runehub;
 
 import com.runehub.game.*;
-import com.runehub.game.task.*;
-import com.runehub.game.util.*;
+import com.runehub.network.*;
 
 /**
  * @author Tylurr <tylerjameshurst@gmail.com>
@@ -10,19 +9,16 @@ import com.runehub.game.util.*;
  */
 public class RuneHub {
     private final GameEngine engine = new GameEngine();
+    private final GameServer server = new GameServer();
 
     private void start() {
         engine.start();
-        engine.submit(new GameTask(TickUnit.MINUTES.toGameTicks(5)) {
-            @Override
-            public void execute() {
-                System.out.println("Spam");
-            }
-        });
+        server.bind(43594);
     }
 
     private void exit() {
         engine.exit();
+        server.exit();
     }
 
     public static void main(String[] args) {
