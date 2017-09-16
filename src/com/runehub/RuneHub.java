@@ -1,8 +1,10 @@
 package com.runehub;
 
+import com.google.common.base.*;
 import com.runehub.filesystem.*;
 import com.runehub.game.*;
 import com.runehub.network.*;
+import com.runehub.util.*;
 
 /**
  * @author Tylurr <tylerjameshurst@gmail.com>
@@ -24,8 +26,13 @@ public class RuneHub {
     }
 
     public static void main(String[] args) {
+        Stopwatch stopwatch = Stopwatch.createStarted();
+        System.setErr(new RuneHubLogger(System.err));
+        System.setOut(new RuneHubLogger(System.out));
+        System.out.println("Starting hub..");
         RuneHub hub = new RuneHub();
         hub.start();
         Runtime.getRuntime().addShutdownHook(new Thread(hub::exit));
+        System.out.println("Ready for operation. ("+stopwatch+")");
     }
 }

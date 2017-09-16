@@ -49,7 +49,6 @@ public abstract class GameTask {
         if (countdown <= 0) {
             if (lifepoints == 0) {
                 cancelled = true;
-                System.out.println("Cancelling");
                 return;
             }
             execute();

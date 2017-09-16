@@ -35,6 +35,15 @@ public class GameEngine extends Thread {
         taskManager.cycle();
     }
 
+    public void submit(Runnable task) {
+        submit(new GameTask(null, 1, 1, 1) {
+            @Override
+            public void execute() {
+                task.run();
+            }
+        });
+    }
+
     public void submit(GameTask task) {
         taskManager.getTasks().add(task);
     }
