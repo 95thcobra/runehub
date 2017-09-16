@@ -4,21 +4,14 @@ import lombok.*;
 
 import java.util.*;
 
+@Getter
+@Setter
 public class ArchiveReference {
-    @Getter
-    @Setter
     private int nameHash, crc, revision;
-    @Getter
-    @Setter
     private byte[] whirpool;
-    @Getter
-    @Setter
     private FileReference[] files;
-    @Getter
-    @Setter
     private int[] validFileIds;
-    @Getter
-    @Setter private boolean updatedRevision, needsFilesSort;
+    private boolean updatedRevision, needsFilesSort;
 
     public ArchiveReference() {
     }

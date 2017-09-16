@@ -8,7 +8,7 @@ public class GZipCompressor {
     public GZipCompressor() {
     }
 
-    public static final byte[] compress(byte[] data) {
+    public static byte[] compress(byte[] data) {
         ByteArrayOutputStream compressedBytes = new ByteArrayOutputStream();
         try {
             GZIPOutputStream e = new GZIPOutputStream(compressedBytes);

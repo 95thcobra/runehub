@@ -1,5 +1,6 @@
 package com.runehub;
 
+import com.runehub.filesystem.*;
 import com.runehub.game.*;
 import com.runehub.network.*;
 
@@ -8,6 +9,7 @@ import com.runehub.network.*;
  * @since 9/14/2017
  */
 public class RuneHub {
+    private final FileSystem fileSystem = FileSystem.open("./resources/cache/");
     private final GameEngine engine = new GameEngine();
     private final GameServer server = new GameServer();
 

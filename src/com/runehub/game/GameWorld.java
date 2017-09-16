@@ -1,5 +1,6 @@
 package com.runehub.game;
 
+import com.runehub.game.model.entity.npc.*;
 import com.runehub.game.model.entity.player.*;
 
 import java.util.*;
@@ -10,6 +11,7 @@ import java.util.*;
  */
 public class GameWorld {
     private final List<Player> players = new LinkedList<>();
+    private final List<Npc> npcs = new LinkedList<>();
 
     public void start() {
 

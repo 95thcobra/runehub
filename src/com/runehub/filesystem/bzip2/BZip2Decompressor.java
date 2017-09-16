@@ -7,7 +7,7 @@ public class BZip2Decompressor {
     public BZip2Decompressor() {
     }
 
-    public static final void decompress(byte[] decompressedData, byte[] packedData, int containerSize, int blockSize) {
+    public static  void decompress(byte[] decompressedData, byte[] packedData, int containerSize, int blockSize) {
         BZip2BlockEntry var4 = entryInstance;
         synchronized (entryInstance) {
             entryInstance.aByteArray2224 = packedData;
@@ -25,7 +25,7 @@ public class BZip2Decompressor {
         }
     }
 
-    private static final void method1785(BZip2BlockEntry entry) {
+    private static  void method1785(BZip2BlockEntry entry) {
         entry.anInt2215 = 0;
         for (int i = 0; i < 256; ++i) {
             if (entry.aBooleanArray2213[i]) {
@@ -35,7 +35,7 @@ public class BZip2Decompressor {
         }
     }
 
-    private static final void method1786(int[] ai, int[] ai1, int[] ai2, byte[] abyte0, int i, int j, int k) {
+    private static  void method1786(int[] ai, int[] ai1, int[] ai2, byte[] abyte0, int i, int j, int k) {
         int l = 0;
         int i3;
         int k2;
@@ -70,7 +70,7 @@ public class BZip2Decompressor {
         }
     }
 
-    private static final void method1787(BZip2BlockEntry entry) {
+    private static  void method1787(BZip2BlockEntry entry) {
         byte byte4 = entry.aByte2201;
         int i = entry.anInt2222;
         int j = entry.anInt2227;
@@ -182,15 +182,15 @@ public class BZip2Decompressor {
         entry.anInt2206 = j1;
     }
 
-    private static final byte method1788(BZip2BlockEntry entry) {
+    private static  byte method1788(BZip2BlockEntry entry) {
         return (byte) method1790(1, entry);
     }
 
-    private static final byte method1789(BZip2BlockEntry entry) {
+    private static  byte method1789(BZip2BlockEntry entry) {
         return (byte) method1790(8, entry);
     }
 
-    private static final int method1790(int i, BZip2BlockEntry entry) {
+    private static  int method1790(int i, BZip2BlockEntry entry) {
         while (entry.anInt2232 < i) {
             entry.anInt2207 = entry.anInt2207 << 8 | entry.aByteArray2224[entry.anInt2209] & 255;
             entry.anInt2232 += 8;
@@ -206,7 +206,7 @@ public class BZip2Decompressor {
         entryInstance = null;
     }
 
-    private static final void method1793(BZip2BlockEntry entry) {
+    private static  void method1793(BZip2BlockEntry entry) {
         int j8 = 0;
         int[] ai = (int[]) null;
         int[] ai1 = (int[]) null;

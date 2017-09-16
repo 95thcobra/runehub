@@ -10,7 +10,7 @@ public class GZipDecompressor {
     public GZipDecompressor() {
     }
 
-    public static final boolean decompress(ByteBuffer stream, byte[] data) {
+    public static  boolean decompress(ByteBuffer stream, byte[] data) {
         Inflater var2 = inflaterInstance;
         synchronized (inflaterInstance) {
             if (stream.getBuffer()[stream.getOffset()] == 31 && stream.getBuffer()[stream.getOffset() + 1] == -117) {
@@ -23,9 +23,8 @@ public class GZipDecompressor {
                 }
                 inflaterInstance.reset();
                 return true;
-            } else {
+            } else
                 return false;
-            }
         }
     }
 }

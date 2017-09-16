@@ -13,7 +13,6 @@ public final class FileSystem {
     private final String path;
     private RandomAccessFile data;
     private byte[] readCachedBuffer;
-    private boolean newProtocol;
 
     public static FileSystem open(String path) {
         return new FileSystem(path);
@@ -22,15 +21,14 @@ public final class FileSystem {
     private FileSystem(String path) {
         this.path = path;
         try {
-            this.newProtocol = true;
             this.data = new RandomAccessFile(path + "main_file_cache.dat2", "rw");
             this.readCachedBuffer = new byte[520];
-            this.index255 = new MainFile(255, this.data, new RandomAccessFile(path + "main_file_cache.idx255", "rw"), this.readCachedBuffer, newProtocol);
+            this.index255 = new MainFile(255, this.data, new RandomAccessFile(path + "main_file_cache.idx255", "rw"), this.readCachedBuffer);
             int idxsCount = this.index255.getArchivesCount();
             this.indexes = new Index[idxsCount];
             for (int id = 0; id < idxsCount; ++id) {
                 Index index = new Index(this.index255, new MainFile(id, this.data, new RandomAccessFile(path + "main_file_cache.idx" + id, "rw"), this
-                        .readCachedBuffer, newProtocol), null);
+                        .readCachedBuffer), null);
                 if (index.getTable() != null) {
                     this.indexes[id] = index;
                 }
@@ -142,7 +140,7 @@ public final class FileSystem {
         Archive archive = new Archive(id, tableCompression, -1, archiveData);
         this.index255.putArchiveData(id, archive.compress());
         indexes[id] = new Index(this.index255, new MainFile(id, this.data, new RandomAccessFile(this.path + "main_file_cache.idx" + id, "rw"), this
-                .readCachedBuffer, this.newProtocol), (int[]) null);
+                .readCachedBuffer), (int[]) null);
     }
 
 }
