@@ -209,6 +209,12 @@ public class ByteBuffer {
         return this;
     }
 
+    public ByteBuffer writeInts(int... ints) {
+        for (int i : ints)
+            writeInt(i);
+        return this;
+    }
+
     public ByteBuffer writeIntV1(int i) {
         writeByte(i >> 8);
         writeByte(i);

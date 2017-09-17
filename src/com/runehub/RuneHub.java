@@ -13,7 +13,7 @@ import com.runehub.util.*;
 public class RuneHub {
     private final FileSystem fileSystem = FileSystem.open("./resources/cache/");
     private final GameEngine engine = new GameEngine();
-    private final GameServer server = new GameServer();
+    private final GameServer server = new GameServer(fileSystem);
 
     private void start() {
         engine.start();
@@ -33,6 +33,6 @@ public class RuneHub {
         RuneHub hub = new RuneHub();
         hub.start();
         Runtime.getRuntime().addShutdownHook(new Thread(hub::exit));
-        System.out.println("Ready for operation. ("+stopwatch+")");
+        System.out.println("Ready for operation. (" + stopwatch + ")");
     }
 }

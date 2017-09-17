@@ -84,7 +84,7 @@ public final class FileSystem {
         return var9;
     }
 
-    private byte[] cryptRSA(byte[] data, BigInteger exponent, BigInteger modulus) {
+    public byte[] cryptRSA(byte[] data, BigInteger exponent, BigInteger modulus) {
         return new BigInteger(data).modPow(exponent, modulus).toByteArray();
     }
 

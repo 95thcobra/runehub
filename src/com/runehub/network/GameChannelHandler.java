@@ -1,5 +1,6 @@
 package com.runehub.network;
 
+import com.runehub.filesystem.*;
 import com.runehub.filesystem.buffer.*;
 import com.runehub.network.session.*;
 import com.runehub.network.session.impl.*;
@@ -11,9 +12,15 @@ import org.jboss.netty.channel.*;
  * @since 9/15/2017
  */
 public final class GameChannelHandler extends SimpleChannelUpstreamHandler {
+    private final FileSystem fileSystem;
+
+    public GameChannelHandler(FileSystem fileSystem) {
+        this.fileSystem = fileSystem;
+    }
+
     @Override
     public void channelConnected(ChannelHandlerContext ctx, ChannelStateEvent e) throws Exception {
-        ctx.setAttachment(new HandshakeSession(ctx, e.getChannel()));
+        ctx.setAttachment(new HandshakeSession(fileSystem,ctx, e.getChannel()));
     }
 
     @Override

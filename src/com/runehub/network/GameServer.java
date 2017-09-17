@@ -1,5 +1,6 @@
 package com.runehub.network;
 
+import com.runehub.filesystem.*;
 import org.jboss.netty.bootstrap.*;
 import org.jboss.netty.channel.socket.nio.*;
 
@@ -13,9 +14,9 @@ import java.util.*;
 public class GameServer {
     private final ServerBootstrap bootstrap = new ServerBootstrap();
 
-    public GameServer() {
+    public GameServer(FileSystem fileSystem) {
         bootstrap.setFactory(new NioServerSocketChannelFactory());
-        bootstrap.setPipelineFactory(new GamePipelineFactory());
+        bootstrap.setPipelineFactory(new GamePipelineFactory(fileSystem));
         bootstrap.setOptions(new HashMap<String, Object>() {{
             put("reuseAddress", true);
             put("child.tcpNoDelay", true);
